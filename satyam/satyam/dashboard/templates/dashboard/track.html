@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% block title%} Track Application{% endblock %}
+{% block content %}
+ <hr class="featurette-divider mt-4">
+    <div class="row featurette mt-5">
+      <div class="col-md-7">
+        <h2 class="featurette-heading"> <span class="text-muted ml-5">Track Your Booking Service</span></h2>
+        <div class="container my-3 ml-5 mr-5">
+          <div class="col-md-8">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+          <form class="ml-5 mr-5" action="" method="get"> 
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name='name' placeholder="Enter Your Service ID">
+            </div>
+          
+            <button type="submit" class="btn btn-success">Track</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-5" id="mead">
+        <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-6">Booking Message </h1>
+            
+            {% for upd in tracks %}
+              <div class="ml-5 mr-5 mt-4" data-spy="scroll">
+                <ul class="list-group">
+                    <h2>{{upd.name}}</h2>
+                    <h2>{{upd.message}}</h2>
+                  <a class="btn btn-success" href="{{upd.link}}" target="_blank">Download
+                  </a>
+                </ul>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+
+  {% block morejs %}
+
+  {% endblock morejs %}

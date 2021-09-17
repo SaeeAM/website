@@ -1,0 +1,14 @@
+{% extends 'dashboard/base.html' %}
+{% block title%} Service detail{% endblock %}
+{% block content %}
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron mt-2 mb-4">
+    <h1>{{object.name}}</h1>
+    <p>{{object.discription|safe}}.</p>
+     <p>
+       <a class="btn btn-lg btn-primary" href="{% url 'costumer' %}" role="button">Book Service &raquo;</a>
+    </p>
+  </div>
+</div>
+{% endblock content %}

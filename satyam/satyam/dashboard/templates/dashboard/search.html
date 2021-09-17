@@ -1,0 +1,27 @@
+{% extends 'dashboard/base.html' %}
+{% block title %} Search{% endblock %}
+{% block content %}
+    <h2>{{ msg }}</h2>
+        
+    <div id="notifi" class="col-md-8" >
+        <div class="card spur-card"  data-spy="scroll" style="position: relative; height: 325px; margin-top: 0rem; overflow: auto;">
+          <div class="card-header">
+            <div class="spur-card-icon">
+              <i class="fas fa-bell"></i>
+            </div>
+            <div class="spur-card-title">Service Search</div>
+          </div>
+          <div class="card-body" data-spy="scroll" style="position: relative; height: 325px; margin-top: 0rem; overflow: auto;">
+            {% for details in service %}
+              <div id="{{details.id}}" class="notifications">
+                <p class="lead">
+                  {{details.name}}
+                </p>
+                
+                <a class="btn btn-lg btn-primary" href="{% url 'detail' details.id %}" role="button">Details &raquo;</a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+{% endblock content %}
